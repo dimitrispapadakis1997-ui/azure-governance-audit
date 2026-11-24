@@ -1,5 +1,9 @@
 # Progress log
 
+## 2026-11-24: Clean run and screenshots
+
+- **Done:** After the dev and prod resource groups were deleted again, the audit ran clean: 8 resources and resource groups, no network security groups, no high or medium findings, seven low findings (missing tags). Added screenshots of the run and the report to the README and marked the project complete.
+
 ## 2026-11-24: First working audit
 
 - **Done:** Python package with six checks, eight unit tests, and a workflow that signs in with OIDC and audits the real subscription. The first report found seven low severity findings, all missing tags on resource groups, the state storage account and the monitoring resources.

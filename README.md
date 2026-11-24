@@ -2,7 +2,15 @@
 
 A Python tool that audits an Azure subscription and writes a Markdown and JSON report. It looks for the things that quietly cost money or open security holes. It runs from GitHub Actions on every push and every Monday, signs in with OIDC (no stored secrets) and only reads from Azure.
 
-**Status:** 🚧 In progress. See [docs/progress-log.md](docs/progress-log.md).
+**Status:** ✅ Complete. See [docs/progress-log.md](docs/progress-log.md).
+
+![Pipeline run: tests, then the audit](docs/images/audit-pipeline.png)
+
+![Report summary in the run page](docs/images/audit-report-summary.png)
+
+![Findings table](docs/images/audit-findings.png)
+
+The report above is a real run against my own subscription. It found seven low severity findings (missing tags). An earlier run found four network security groups that should not have existed, which led to the lesson in the progress log.
 
 ## What it checks
 
@@ -31,6 +39,11 @@ Sign in first (for example with `az login`); the tool uses `DefaultAzureCredenti
 ## Pipeline
 
 `.github/workflows/audit.yml` runs the unit tests on every push and pull request. On `main` and on the weekly schedule it also signs in with OIDC, runs the audit, shows the report in the run summary and uploads it as an artifact. Setup is in [docs/bootstrap.md](docs/bootstrap.md).
+
+## Possible next steps
+
+- Use a dedicated Reader-only app registration instead of the shared one.
+- Seed deliberate misconfigurations (an open NSG, a public storage account) in a sandbox to show the high severity checks firing.
 
 ## How this was built
 
