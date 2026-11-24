@@ -3,7 +3,7 @@
 from azure.identity import DefaultAzureCredential
 from azure.mgmt.compute import ComputeManagementClient
 from azure.mgmt.network import NetworkManagementClient
-from azure.mgmt.resource import ResourceManagementClient
+from azure.mgmt.resource.resources import ResourceManagementClient  # moved in azure-mgmt-resource 25+
 from azure.mgmt.storage import StorageManagementClient
 
 
